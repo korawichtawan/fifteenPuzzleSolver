@@ -48,25 +48,20 @@ func canMove(s State, direction string) bool {
 
 	previousMove := lastMove(&s)
 
-	if direction == "t" {
+	switch direction {
+	case "t":
 		if x == 0 || (previousMove == "b") {
 			return false
 		}
-	}
-
-	if direction == "b" {
+	case "b":
 		if x == 3 || (previousMove == "t") {
 			return false
 		}
-	}
-
-	if direction == "r" {
+	case "r":
 		if y == 3 || (previousMove == "l") {
 			return false
 		}
-	}
-
-	if direction == "l" {
+	case "l":
 		if y == 0 || (previousMove == "r") {
 			return false
 		}
@@ -155,7 +150,7 @@ func Solve(board [4][4]int) (int,[]string){
 			bestAns = topItem.value.answer
 			// break
 		} 
-		if (topItem.priority + len(topItem.value.answer) < minMove) {
+		if (topItem.priority + len(topItem.value.answer) < minMove) && (len(topItem.value.answer) < 40) {
 
 			for _,direction := range directions {
 				go tryMove(topItem.value,direction,ch)
