@@ -153,7 +153,7 @@ func Solve(board [4][4]int) (int,[]string){
 		if (calCost(&(topItem.value.board)) == 0) && (len(topItem.value.answer) < minMove) {
 			minMove = len(topItem.value.answer)
 			bestAns = topItem.value.answer
-			break
+			// break
 		} 
 		if (topItem.priority + len(topItem.value.answer) < minMove) {
 
